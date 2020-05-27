@@ -1,3 +1,4 @@
+import { MongooseModule } from '@nestjs/mongoose';
 import { Module } from '@nestjs/common';
 import { AngularUniversalModule } from '@nestjs/ng-universal';
 import { join } from 'path';
@@ -9,6 +10,10 @@ import { TodosModule } from './todos/todos.module';
     AngularUniversalModule.forRoot({
       bootstrap: AppServerModule,
       viewsPath: join(process.cwd(), 'dist/fullStackNgxs/browser')
+    }),
+    MongooseModule.forRoot(`mongodb://localhost:27017/todos_crud`, {
+      userNewUrlParse:true,
+      userUnifiedTopology:true
     }),
     TodosModule
   ],
