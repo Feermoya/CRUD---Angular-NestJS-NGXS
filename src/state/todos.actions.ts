@@ -5,18 +5,18 @@ export class GetTodos {  //eventos que desencadenan algo
 }
 
 
-export class AddTodos {
+export class AddTodo {
   static readonly type = '[Todos] Add';
   constructor(public payload: Todo) { }
 }
 
-export class UpdateTodos {
+export class UpdateTodo {
   static readonly type = '[Todos] Update';
   constructor(public id: string, public payload: Todo) { }
 }
 
 
-export class DeleteTodos {
+export class DeleteTodo {
   static readonly type = '[Todos] Delete';
   constructor(public id: string) { }
 }
