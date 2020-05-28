@@ -16,20 +16,18 @@ export class TodoService {
   }
 
   addTodo(todo: Todo): Observable<Todo> {
-    const todoObj={
+    const todoObj = {
       name: todo.name,
     };
-    return this.http.post<Todo>(this.URL_API, todo)
+    return this.http.post<Todo>(this.URL_API, todoObj);
   }
 
   UpdateTodo(id: string, todo: Todo): Observable<Todo> {
-    return this.http.put<Todo>(`${this.URL_API}/ ${id}`, todo)
+    return this.http.put<Todo>(`${this.URL_API}/${id}`, todo);
   }
 
   deleteTodo(id: string): Observable<{}> {
-    return this.http.delete<Todo>(`${this.URL_API}/ ${id}`);
+    return this.http.delete<Todo>(`${this.URL_API}/${id}`);
   }
-
-
 
 }
