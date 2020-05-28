@@ -1,5 +1,9 @@
-import { TodoService } from '@app/todos/services/todo.service';
+import { GetTodos } from '@store/todos.actions';
+import { Todo } from '@serverAPI/todos/interface/todo.interface';
+import { TodosState } from '@store/todos.state';
 import { Component, OnInit } from '@angular/core';
+import { Select, Store} from '@ngxs/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-todos-list',
@@ -8,12 +12,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodosListComponent implements OnInit {
 
-  constructor(private todoSvc: TodoService) { }
+  @Select(TodosState. getTodoList) todos$: Observable<Todo[]>; //guardo en todos lo que halla en el listado
+
+
+  constructor( private store: Store) { }
 
   ngOnInit(): void {
-    this.todoSvc.getAll().subscribe(res =>{
-      console.log('res -> ' , res );
-    });
+   this.store.dispatch(new GetTodos());
   }
 
 }

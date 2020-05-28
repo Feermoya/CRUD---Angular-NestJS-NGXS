@@ -1,33 +1,28 @@
-<ng-container>
-<table class="table table-striped">
-<thead>
+<ng-container *ngIf="todos$ | async as todos; else loading">
+  <table class="table table-striped">
+    <thead>
 
-  <tr>
-    <th>Name</th>
-    <th>Actions</th>
-    <th>Status</th>
+      <tr>
+        <th>Name</th>
+        <th>Actions</th>
+        <th>Status</th>
 
-  </tr>
-</thead>
-
-<tbody>
-  <tr>
-    <td>Todo.name</td>
-    <td>
-      <button class="btn btn-outline-info">Edit</button>
-      &nbsp;
-      <button class="btn btn-outline-danger">Delete</button>
-    </td>
-    <td>
-      <input type="checkbox" >
-    </td>
-  </tr>
-</tbody>
-
-
-</table>
-
-
-
-
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let todo of todos">
+        <td>{{todo.name}}</td>
+        <td>
+          <button class="btn btn-outline-info">Edit</button>
+          &nbsp;
+          <button class="btn btn-outline-danger">Delete</button>
+        </td>
+        <td>
+          <input type="checkbox">
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </ng-container>
+
+<ng-template #loading> Loading data ....</ng-template>
