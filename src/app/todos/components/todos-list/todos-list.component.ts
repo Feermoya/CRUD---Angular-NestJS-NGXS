@@ -1,4 +1,4 @@
-import { GetTodos, SetSelectedTodo, DeleteTodo } from '@store/todos.actions';
+import { GetTodos, SetSelectedTodo, DeleteTodo, UpdateTodo } from '@store/todos.actions';
 import { Todo } from '@serverAPI/todos/interface/todo.interface';
 import { TodosState } from '@store/todos.state';
 import { Component, OnInit } from '@angular/core';
@@ -30,6 +30,15 @@ export class TodosListComponent implements OnInit {
     if (confirmation) {
       this.store.dispatch(new DeleteTodo(id));
     }
+  }
+
+  onCompletedTodo(todo: Todo): void{
+    const todoObj: Todo={
+      name: todo.name,
+      completed: true,
+    };
+
+    this.store.dispatch(new UpdateTodo(todo._id, todoObj));
   }
 
 }

@@ -6,19 +6,20 @@
         <th>Name</th>
         <th>Actions</th>
         <th>Status</th>
-
       </tr>
+
     </thead>
     <tbody>
       <tr *ngFor="let todo of todos">
-        <td>{{todo.name}}</td>
+        <td [ngClass] ="{'is-completed': todo.completed }">{{todo.name}}</td>
         <td>
-          <button class="btn btn-outline-info" (click)="onEdit(todo)">Edit</button>
+          <button [disabled]="todo.completed" class="btn btn-outline-info" (click)="onEdit(todo)">Edit</button>
           &nbsp;
-          <button class="btn btn-outline-danger" (click)="onDelete(todo._id)">Delete</button>
+          <button [disabled]="todo.completed" class="btn btn-outline-danger"
+            (click)="onDelete(todo._id)">Delete</button>
         </td>
         <td>
-          <input type="checkbox">
+          <input type="checkbox" [disabled]="todo.completed" (click)="onCompletedTodo(todo)" />
         </td>
       </tr>
     </tbody>

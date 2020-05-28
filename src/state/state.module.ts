@@ -18,7 +18,7 @@ import { TodosState } from '@store/todos.state';
       developmentMode: !environment.production,
     }),
     NgxsLoggerPluginModule.forRoot(),
-    NgxsReduxDevtoolsPluginModule.forRoot()
+    NgxsReduxDevtoolsPluginModule.forRoot(),
   ],
 })
 export class StateModule { }

@@ -19,7 +19,7 @@ export class TodoService {
     const todoObj={
       name: todo.name,
     };
-    return this.http.post<Todo>(this.URL_API, todoObj)
+    return this.http.post<Todo>(this.URL_API, todo)
   }
 
   UpdateTodo(id: string, todo: Todo): Observable<Todo> {
@@ -27,7 +27,7 @@ export class TodoService {
   }
 
   deleteTodo(id: string): Observable<{}> {
-    return this.http.delete<Todo>(`${this.URL_API}/ ${id}`)
+    return this.http.delete<Todo>(`${this.URL_API}/ ${id}`);
   }
 
 

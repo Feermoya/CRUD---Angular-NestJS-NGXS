@@ -71,9 +71,9 @@ export class TodosState {
     { id, payload }: UpdateTodo) {
     return this.todoSvc.UpdateTodo(id, payload).pipe(
       tap((todo: Todo) => {
-        const state = getState();   //obtengo el state
-        const newState = state.todos.filter(todo => todo._id != id);//creo un nuevo state
-        setState({ ...state, todos: [...newState, todo] });//seteo el nuevo state
+        const state = getState();      //obtengo el state
+        const newState = state.todos.filter( (todo) => todo._id !== id);       //creo un nuevo state
+        setState({ ...state, todos: [...newState, todo] });     //seteo el nuevo state
       })
     );
   }
@@ -85,7 +85,7 @@ export class TodosState {
     return this.todoSvc.deleteTodo(id).pipe(
       tap(() => {
         const state = getState();
-        const newState = state.todos.filter(todo => todo._id != id);
+        const newState = state.todos.filter((todo) => todo._id !== id);
         patchState({
           ...state.todos,
           todos: [...newState]
@@ -104,11 +104,4 @@ export class TodosState {
       selectedTodo: payload,
     });
   }
-
-
-
-
-
-
-
 }

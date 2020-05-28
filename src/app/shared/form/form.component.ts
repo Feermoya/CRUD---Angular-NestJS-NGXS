@@ -1,3 +1,4 @@
+import { SetSelectedTodo } from './../../../state/todos.actions';
 
 import { TodosState } from '@store/todos.state';
 import { AddTodo, UpdateTodo } from '@store/todos.actions';
@@ -25,13 +26,10 @@ export class FormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.selectedTodo$.subscribe((todo) => {
       if (todo) {
         this.refillForm(todo);
         this.editTodo = true;
-      } else {
-        this.editTodo = false;
       }
     })
   }
@@ -45,6 +43,8 @@ export class FormComponent implements OnInit {
       this.store.dispatch(new AddTodo(todo));
     }
     this.resetForm();
+   // this.utilsSvc.showForm(false);
+    this.store.dispatch(new SetSelectedTodo(null));
   }
 
   private resetForm(): void {
