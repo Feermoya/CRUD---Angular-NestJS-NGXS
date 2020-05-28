@@ -1,4 +1,4 @@
-# FullStackNgxs
+# FullStackNgxs <img src='https://bettercodehub.com/edge/badge/Feermoya/CRUD---Angular-NestJS-NGXS?branch=master'>
 
 ![Aquí la descripción de la imagen por si no carga](https://github.com/Feermoya/CRUD---Angular-NestJS-NGXS/blob/master/Anotaci%C3%B3n%202020-05-28%20174235.png)
 
@@ -13,6 +13,11 @@ Simple crud, para guardar, editar y eliminar tareas en una base de datos Nosql.
 * [Angular](https://angular.io/)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.5.
+
+
+ * [NGXS](https://www.ngxs.io/) : es un state management para Angular.
+Esta basado en el patron redux, que actua como fuente unica de verdad para el estado de tu aplicacion. 
+NGXS reduce las repeticiones utilizando caracteristicas modernas de TypeScript, como clases y decoradores. 
 
 ## Run App
 
