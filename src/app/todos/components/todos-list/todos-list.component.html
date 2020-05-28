@@ -13,7 +13,7 @@
       <tr *ngFor="let todo of todos">
         <td>{{todo.name}}</td>
         <td>
-          <button class="btn btn-outline-info">Edit</button>
+          <button class="btn btn-outline-info" (click)="onEdit(todo)">Edit</button>
           &nbsp;
           <button class="btn btn-outline-danger">Delete</button>
         </td>
