@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-
+import { UtilsService } from '@shared/services/utils.service';
+import { Component } from '@angular/core';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
-  constructor() { }
+  public showForm$ = this.utilsSvc.showAction$;
 
-  ngOnInit(): void {
+  constructor(private utilsSvc: UtilsService) { }
+
+
+  onShowForm(): void {
+    this.utilsSvc.showForm(true);
   }
-
 }

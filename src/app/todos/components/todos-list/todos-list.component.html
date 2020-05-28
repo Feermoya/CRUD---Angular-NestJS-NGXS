@@ -10,7 +10,7 @@
 
     </thead>
     <tbody>
-      <tr *ngFor="let todo of todos">
+      <tr *ngFor="let todo of todos; trackBy: trackByFunction">
         <td [ngClass] ="{'is-completed': todo.completed }">{{todo.name}}</td>
         <td>
           <button [disabled]="todo.completed" class="btn btn-outline-info" (click)="onEdit(todo)">Edit</button>

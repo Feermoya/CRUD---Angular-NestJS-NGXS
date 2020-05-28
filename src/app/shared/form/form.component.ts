@@ -1,5 +1,5 @@
+import { UtilsService } from './../services/utils.service';
 import { SetSelectedTodo } from './../../../state/todos.actions';
-
 import { TodosState } from '@store/todos.state';
 import { AddTodo, UpdateTodo } from '@store/todos.actions';
 import { Todo } from '@serverAPI/todos/interface/todo.interface';
@@ -21,7 +21,8 @@ export class FormComponent implements OnInit {
   public todoForm: FormGroup;
   public editTodo = false;
 
-  constructor(private fb: FormBuilder, private store: Store) {
+
+  constructor(private fb: FormBuilder, private store: Store, private utilsSvc: UtilsService) {
     this.createForm();
   }
 
@@ -34,7 +35,7 @@ export class FormComponent implements OnInit {
     })
   }
 
-  onSave(todo: Todo) {
+  onSave(todo: Todo): void {
     if (this.editTodo) {
       //editando
       this.store.dispatch(new UpdateTodo(todo._id, todo));
@@ -43,7 +44,7 @@ export class FormComponent implements OnInit {
       this.store.dispatch(new AddTodo(todo));
     }
     this.resetForm();
-   // this.utilsSvc.showForm(false);
+    this.utilsSvc.showForm(false);
     this.store.dispatch(new SetSelectedTodo(null));
   }
 

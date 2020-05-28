@@ -1,3 +1,4 @@
+import { UtilsService } from '@shared/services/utils.service';
 import { GetTodos, SetSelectedTodo, DeleteTodo, UpdateTodo } from '@store/todos.actions';
 import { Todo } from '@serverAPI/todos/interface/todo.interface';
 import { TodosState } from '@store/todos.state';
@@ -15,7 +16,7 @@ export class TodosListComponent implements OnInit {
   @Select(TodosState.getTodoList) todos$: Observable<Todo[]>; //guardo en todos lo que halla en el listado
 
 
-  constructor(private store: Store) { }
+  constructor(private store: Store, private utilsSvc: UtilsService) { }
 
   ngOnInit(): void {
     this.store.dispatch(new GetTodos());
@@ -23,6 +24,7 @@ export class TodosListComponent implements OnInit {
 
   onEdit(todo: Todo): void {
     this.store.dispatch(new SetSelectedTodo(todo));   //setea el todo
+    this.utilsSvc.showForm(true);
   }
 
   onDelete(id: string): void {
@@ -37,8 +39,12 @@ export class TodosListComponent implements OnInit {
       name: todo.name,
       completed: true,
     };
-
     this.store.dispatch(new UpdateTodo(todo._id, todoObj));
+  }
+
+  trackByFunction({ item }){  //mejora el rendimiento
+    if (!item) return null;
+    return item._id;
   }
 
 }
